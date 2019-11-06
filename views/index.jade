@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  br
+  h1= "Create new game session"
+  form(action="/session/new" method="POST")
+    label(for="session-password-input")= "Password: "
+    input(id="session-password-input" name="session-password-input" type="password" placeholder="password")
+    button(type="submit")= "Create"
+  
+  if sessionUrl
+    h1= "Your session: "
+    a(href=sessionUrl)= sessionUrl

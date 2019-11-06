@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} session
+  br
+  form(action="/session/" + id + "/verify" method="POST")
+    label(for="session-name-input")= "Name: "
+    input(id="session-name-input" name="session-name-input" type="text" placeholder="username" required="true")
+    label(for="session-password-input")= "Session password: "
+    input(id="session-password-input" name="session-password-input" type="password" placeholder="password" required="true")
+    input(name="playerId" type="hidden" value=playerId)
+    button(type="submit")= "Enter"
+
+  if passwordFailed
+    h1= "Invalid password. Go again."
